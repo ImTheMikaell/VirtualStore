@@ -3,7 +3,7 @@ import { fastifyCors } from '@fastify/cors';
 import { config } from './config/config.js';
 import { fastifyCookie } from '@fastify/cookie';
 import { fastifyHelmet } from '@fastify/helmet';
-import { prisma } from './config/db.js';
+import { connectDb, prisma } from './config/db.js';
 
 const app = fastify();
 app.register(fastifyCors, {
@@ -22,5 +22,5 @@ try {
   app.listen({ port: config.PORT });
   console.log(`Server is running on port: ${config.PORT}`);
 } catch (error) {
-  console.log(error);
+  console.log(`Error on start server: ${error}`);
 }
