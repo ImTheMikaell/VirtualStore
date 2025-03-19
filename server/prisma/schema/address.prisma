@@ -1,0 +1,17 @@
+model Address {
+  id          String   @id @default(uuid())
+  addressLine String
+  city        String
+  state       String
+  pincode     String
+  country     String
+  phone       String
+  status      Boolean  @default(true)
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  order       Order[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("address")
+}
