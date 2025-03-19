@@ -1,0 +1,12 @@
+model SubCategory {
+  name       String    @unique
+  image      String
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  Product    Product?  @relation(fields: [productId], references: [id])
+  productId  String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("subCategory")
+}

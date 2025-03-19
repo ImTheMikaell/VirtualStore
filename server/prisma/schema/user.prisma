@@ -1,0 +1,34 @@
+model User {
+  id                   String       @id @default(uuid())
+  name                 String
+  email                String       @unique
+  password             String
+  avatar               String?
+  phone                String?
+  refreshToken         String?      @db.Text
+  verifyEmail          Boolean      @default(false)
+  lastLoginDate        DateTime     @updatedAt
+  status               Status       @default(ACTIVE)
+  addressDetails       Address[]
+  shoppingCart         CartProduct?
+  orderHistory         Order?
+  forgotPasswordOtp    String?
+  forgotPasswordExpiry DateTime?
+  role                 Role         @default(USER)
+  orderId              String
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@map("user")
+}
+
+enum Status {
+  ACTIVE
+  SUSPENDED
+  INACTIVE
+}
+
+enum Role {
+  ADMIN
+  USER
+}

@@ -1,0 +1,15 @@
+model Product {
+  id            String        @id @default(uuid())
+  image         String[]
+  category      Category[]
+  subCategry    SubCategory[]
+  unit          String
+  stock         String
+  CartProduct   CartProduct?  @relation(fields: [cartProductId], references: [userId])
+  cartProductId String?
+  Order         Order[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("product")
+}
