@@ -11,11 +11,10 @@ model User {
   status               Status       @default(ACTIVE)
   addressDetails       Address[]
   shoppingCart         CartProduct?
-  orderHistory         Order?
+  orderHistory         Order[]
   forgotPasswordOtp    String?
   forgotPasswordExpiry DateTime?
   role                 Role         @default(USER)
-  order                String[]
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
 
